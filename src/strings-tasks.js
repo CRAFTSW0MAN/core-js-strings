@@ -181,22 +181,6 @@ function removeLastOccurrences(str, value) {
 }
 
 /**
- * Calculate the sum of character codes of the given string.
- *
- * @param {string} str - The input string.
- * @return {number} - The sum of character codes of the string.
- *
- * @example
- *   sumOfCodes('My String') => 861 (77 + 121 + 32 + 83 + 116 + 114 + 105 + 110 + 103 = 861)
- *   sumOfCodes('12345') => 255 (49 + 50 + 51 + 52 + 53 = 255)
- *   sumOfCodes('') => 0
- *   sumOfCodes() => 0
- */
-function sumOfCodes(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
  * Checks if a string starts with a specific substring.
  *
  * @param {string} str - The input string.
@@ -264,21 +248,6 @@ function reverseString(str) {
 }
 
 /**
- * Returns a string with characters in alphabetical order.
- *
- * @param {string} str - The input string.
- * @return {string} - The string in alphabetical order.
- *
- * @example:
- *   orderAlphabetically('webmaster') => 'abeemrstw'
- *   orderAlphabetically('textbook') => 'bekoottx'
- *   orderAlphabetically('abc123xyz') => '123abcxyz'
- */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
  * Checks if a given string contains a specified substring.
  *
  * @param {string} str - The input string to search within.
@@ -295,86 +264,6 @@ function containsSubstring(str, substring) {
 }
 
 /**
- * Returns the number of vowels in the string.
- * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
- *
- * @param {string} str - The input string.
- * @return {number} - The number of vowels in the string.
- *
- * @example:
- *   countVowels('apple')  => 2
- *   countVowels('banana') => 3
- *   countVowels('cherry') => 2
- *   countVowels('aEiOu') => 5
- *   countVowels('XYZ') => 1
- */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns true if the string is a palindrome; otherwise false.
- * https://en.wikipedia.org/wiki/Palindrome
- *
- * @param {string} str - The input string.
- * @return {bool} - True if the string is a palindrome, false otherwise.
- *
- * @example:
- *   isPalindrome('madam') => true
- *   isPalindrome('racecar') => true
- *   isPalindrome('apple') => false
- *   isPalindrome('No lemon, no melon') => true
- */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Find the longest word in the sentence. If there are multiple longest words,
- * the function returns the first one encountered.
- *
- * @param {string} sentence - The input sentence.
- * @returns {string} - The longest word in the sentence.
- *
- * @example:
- *   findLongestWord('The quick brown fox') => 'quick'
- *   findLongestWord('A long and winding road') => 'winding'
- *   findLongestWord('No words here') => 'words'
- */
-function findLongestWord(/* sentence */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns the string where each word is reversed.
- *
- * @param {string} str - The input string.
- * @return {string} - The string where each word is reversed.
- *
- * @example:
- *   reverseWords('Hello World') => 'olleH dlroW'
- *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
- */
-function reverseWords(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Inverts the case of each character in the given string.
- *
- * @param {string} str - The input string.
- * @returns {string} - The string with the case of each character inverted.
- *
- * @example
- *   invertCase('Hello, World!') =>  'hELLO, wORLD!'
- *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
- *   invertCase('12345') => '12345'
- */
-function invertCase(/* str */) {
-  throw new Error('Not implemented');
-}
-
-/**
  * Returns the result of string template and given parameters firstName and lastName.
  * Please do not use concatenation, use template string :
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/template_strings
@@ -387,8 +276,8 @@ function invertCase(/* str */) {
  *   getStringFromTemplate('John','Doe') => 'Hello, John Doe!'
  *   getStringFromTemplate('Chuck','Norris') => 'Hello, Chuck Norris!'
  */
-function getStringFromTemplate(/* firstName, lastName */) {
-  throw new Error('Not implemented');
+function getStringFromTemplate(firstName, lastName) {
+  return `Hello, ${firstName} ${lastName}!`;
 }
 
 /**
@@ -419,8 +308,8 @@ function extractNameFromTemplate(value) {
  *   unbracketTag('<span>') => 'span'
  *   unbracketTag('<a>') => 'a'
  */
-function unbracketTag(/* str */) {
-  throw new Error('Not implemented');
+function unbracketTag(str) {
+  return str.replace(/[<>]/g, '');
 }
 
 /**
@@ -438,8 +327,8 @@ function unbracketTag(/* str */) {
  *   ],
  *   'info@gmail.com' => ['info@gmail.com']
  */
-function extractEmails(/* str */) {
-  throw new Error('Not implemented');
+function extractEmails(str) {
+  return str.split(';');
 }
 
 /**
@@ -669,6 +558,164 @@ function getCardId(value) {
     'K♠',
   ];
   return arr.indexOf(value);
+}
+
+/**
+ * Returns the string where each word is reversed.
+ *
+ * @param {string} str - The input string.
+ * @return {string} - The string where each word is reversed.
+ *
+ * @example:
+ *   reverseWords('Hello World') => 'olleH dlroW'
+ *   reverseWords('The Quick Brown Fox') => 'ehT kciuQ nworB xoF'
+ */
+function reverseWords(str) {
+  const arr = str.split(' ');
+  const newArr = [];
+  for (let j = 0; j < arr.length; j += 1) {
+    let newStr = '';
+    for (let i = arr[j].length - 1; i >= 0; i -= 1) {
+      newStr += arr[j][i];
+    }
+
+    newArr.push(newStr);
+  }
+  return newArr.join(' ');
+}
+
+/**
+ * Inverts the case of each character in the given string.
+ *
+ * @param {string} str - The input string.
+ * @returns {string} - The string with the case of each character inverted.
+ *
+ * @example
+ *   invertCase('Hello, World!') =>  'hELLO, wORLD!'
+ *   invertCase('JavaScript is Fun') => 'jAVAsCRIPT IS fUN'
+ *   invertCase('12345') => '12345'
+ */
+function invertCase(str) {
+  let newStr = '';
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i] === str[i].toUpperCase()) {
+      newStr += str[i].toLowerCase();
+    } else {
+      newStr += str[i].toUpperCase();
+    }
+  }
+  return newStr;
+}
+
+/**
+ * Returns true if the string is a palindrome; otherwise false.
+ * https://en.wikipedia.org/wiki/Palindrome
+ *
+ * @param {string} str - The input string.
+ * @return {bool} - True if the string is a palindrome, false otherwise.
+ *
+ * @example:
+ *   isPalindrome('madam') => true
+ *   isPalindrome('racecar') => true
+ *   isPalindrome('apple') => false
+ *   isPalindrome('No lemon, no melon') => true
+ */
+function isPalindrome(str) {
+  const cleanStr = str.toLowerCase().replace(/[\W_]/g, '');
+  const reversedStr = cleanStr.split('').reverse().join('');
+  if (reversedStr === cleanStr) {
+    return true;
+  }
+  return false;
+}
+
+/**
+ * Returns a string with characters in alphabetical order.
+ *
+ * @param {string} str - The input string.
+ * @return {string} - The string in alphabetical order.
+ *
+ * @example:
+ *   orderAlphabetically('webmaster') => 'abeemrstw'
+ *   orderAlphabetically('textbook') => 'bekoottx'
+ *   orderAlphabetically('abc123xyz') => '123abcxyz'
+ */
+function orderAlphabetically(str) {
+  return str.split('').sort().join('');
+}
+
+/**
+ * Returns the number of vowels in the string.
+ * Vowels: 'a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'.
+ *
+ * @param {string} str - The input string.
+ * @return {number} - The number of vowels in the string.
+ *
+ * @example:
+ *   countVowels('apple')  => 2
+ *   countVowels('banana') => 3
+ *   countVowels('cherry') => 2
+ *   countVowels('aEiOu') => 5
+ *   countVowels('XYZ') => 1
+ */
+function countVowels(str) {
+  const arr = ['a', 'e', 'i', 'o', 'u', 'y', 'A', 'E', 'I', 'O', 'U', 'Y'];
+  let count = 0;
+  for (let i = 0; i < str.length; i += 1) {
+    if (arr.indexOf(str[i]) !== -1) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+/**
+ * Find the longest word in the sentence. If there are multiple longest words,
+ * the function returns the first one encountered.
+ *
+ * @param {string} sentence - The input sentence.
+ * @returns {string} - The longest word in the sentence.
+ *
+ * @example:
+ *   findLongestWord('The quick brown fox') => 'quick'
+ *   findLongestWord('A long and winding road') => 'winding'
+ *   findLongestWord('No words here') => 'words'
+ */
+function findLongestWord(sentence) {
+  const str = sentence.split(' ');
+  let longestStr = '';
+
+  for (let i = 0; i < str.length; i += 1) {
+    if (str[i].length > longestStr.length) {
+      longestStr = str[i];
+    }
+  }
+
+  return longestStr;
+}
+
+/**
+ * Calculate the sum of character codes of the given string.
+ *
+ * @param {string} str - The input string.
+ * @return {number} - The sum of character codes of the string.
+ *
+ * @example
+ *   sumOfCodes('My String') => 861 (77 + 121 + 32 + 83 + 116 + 114 + 105 + 110 + 103 = 861)
+ *   sumOfCodes('12345') => 255 (49 + 50 + 51 + 52 + 53 = 255)
+ *   sumOfCodes('') => 0
+ *   sumOfCodes() => 0
+ */
+function sumOfCodes(str) {
+  if (!str) {
+    return 0;
+  }
+  const arr = str.split('');
+  let count = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    count += arr[i].charCodeAt();
+  }
+  return count;
 }
 
 module.exports = {
